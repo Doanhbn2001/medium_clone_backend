@@ -60,3 +60,21 @@
 
 - `pnpm add @nestjs/typeorm typeorm pg`
 - We will use https://typeorm.io/ for interactin with postgresql
+
+## 10. Create Tag Entity
+
+- http://typeorm.io/entities
+- Entity is a class that maps to a database table (or collection when using MongoDB). You can create an entity by defining a new class and mark it with @Entity()
+- connect to db: `\c mediumclone`
+- `dt`: list all tables
+- `\d tag`: describe tag table
+
+## 11. Create Tag Repository
+
+- add data to the table tag: `insert into tag (name) values ('javascript');`.
+- to see data: `select * from tag;`
+- https://docs.nestjs.com/techniques/database#repository-pattern
+- TypeORM supports the repository design pattern, so each entity has its own repository. These repositories can be obtained from the database data source.
+- This module uses the forFeature() method to define which repositories are registered in the current scope
+- inject the TagRepository into the TagService using the
+- once data is fetched inside service, modify the response in controller to match the API spec. Note: don't modify the response in service, keep it as it is. Modify the response in controller. Since service can be reused in other places as well.
